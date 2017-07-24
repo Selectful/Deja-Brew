@@ -11,6 +11,7 @@ const {
   BreweryRating,
   BeerRating
 } = require('./server/db/dbModel.js')
+require('dotenv').config();
 
 const userRouter = require('./server/router/userRouter.js');
 const friendRouter = require('./server/router/friendRouter.js');
@@ -55,7 +56,7 @@ db.authenticate()
   })
 
 const port = 3333;
-app.listen(port, function(err) {
+app.listen(process.env.PORT || port, function(err) {
   if (err) {
     console.log('unable to connect to port ', port);
   } else {
